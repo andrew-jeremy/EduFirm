@@ -1,14 +1,7 @@
----
-title: "Kafka deployment in Educational Firm"
-author: "Kenneth Chen, Ph.D"
-date: "6/29/2018"
-output: pdf_document
----
-
-```{r setup, include=FALSE}
-library(knitr)
-knitr::opts_chunk$set(fig.pos = 'h', out.extra='', echo = FALSE)
-```
+|-----------|----------------------------------|
+|Title |  "Kafka deployment in Educational Firm" |
+|Author | "Kenneth Chen, Ph.D" |
+|Date | "6/29/2018" |
 
 __Synopsis__  
 
