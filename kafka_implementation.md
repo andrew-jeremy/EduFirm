@@ -16,17 +16,13 @@ __Synopsis__
 
 As a data scientist at Ed Tech Firm that specializes in administering a number of tests, a common issue that comes up often to our data scientist team was a latency issue among several of our data warehouse. We have lots of data systems: relational databases, Apache Hadoop, Apache Spark, Redis, service system, a search system and monitoring systems. The raw data, repositories of past and present tests and results, are currently housed in AWS S3. A number of exam questions are dumped into a service layer before the actual test. The real-time data that are accumulated as exam takers submit their answers are stored in monitoring systems. As a result, our team spent most of our time establishing multiple pipelines connecting several of our data warehouse to streamline our data. However, the latency issue with different APIs across different pipelines still persists. Another confounding factor ensues as we expand our test centers, geographical replications of all of our pipelines have become another daily struggles for our team to streamline our data. A typical flowchart of our data is shown below.  
 
-```{r before_kafka,fig.cap='Data Communications',fig.align='center', out.width='60%'}
-knitr::include_graphics('img/before_kafka.png')
-``` 
+![Figure 1. Data Communications](img/before_kafka.png){width=50%}
 
 __Kafka__  
 
 To overcome the latency issue and real time impact, our team deployed kafka messaging system (open-source) in our test centers. Kafka serves as a central warehouse from which several service centers retrieve (consume) or immediately feed (produce) their real-time data for instant implementation. The goal of our data scientist team is to facilitate test takers exams schedules, adjust their exam questions based on their real-time answers and instant scoring system. Kafka facilitates all of our needs in our data warehouse and provides an efficiency and timeliness.  
 
-```{r echo=FALSE, after_kafka,fig.cap='Data Communications',fig.align='center', out.width='60%'}
-knitr::include_graphics('img/after_kafka.png')
-``` 
+![Figure 2. Kafka Streaming Platform](img/after_kafka.png){width=50%}
 
 
 ### 1. Logging into the assignment folder
@@ -109,11 +105,4 @@ knitr::include_graphics('img/after_kafka.png')
 - This is reflective of what is going on in computer-adjusted examinations such as GRE, GMAT where questions appearing in next attempt are adjusted based on students performance on current questions. 
 - We could also look at the duration of time each student takes for the exam.   
 - There are 3181 entry in our database.  
-  
-
-
-
-
-
-
 
