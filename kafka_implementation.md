@@ -20,13 +20,13 @@ __Synopsis__
 <img src="img/before_kafka.png" width="600"></p>
 <p align="center">Figure 1. Data Communications</p>
 
-![Figure 1. Data Communications](img/before_kafka.png | width=100)
-
 __Kafka__  
 
 To overcome the latency issue and real time impact, our team deployed kafka messaging system (open-source) in our test centers. Kafka serves as a central warehouse from which several service centers retrieve (consume) or immediately feed (produce) their real-time data for instant implementation. The goal of our data scientist team is to facilitate test takers exams schedules, adjust their exam questions based on their real-time answers and instant scoring system. Kafka facilitates all of our needs in our data warehouse and provides an efficiency and timeliness.  
 
-![Figure 2. Kafka Streaming Platform](img/after_kafka.png){width=50%}
+<p align="center">
+<img src="img/after_kafka.png" width="600"></p>
+<p align="center">Figure 2. Kafka Real Time Data Communications</p>
 
 
 ### 1. Logging into the assignment folder
