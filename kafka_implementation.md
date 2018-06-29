@@ -1,8 +1,10 @@
+<center>
 |Title |  Kafka deployment in Educational Firm |
 |-----------|----------------------------------|
 |Author | Kenneth Chen, Ph.D |
 |Utility | Kafka, Spark, HDFS, Redis |
 |Date | 6/29/2018 |
+</center>
 
 
 __Synopsis__  
