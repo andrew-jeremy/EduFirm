@@ -1,4 +1,4 @@
-[]  () |
+[]() |
 |-----------|----------------------------------|
 |Title |  Kafka deployment in Educational Firm |
 |Author | Kenneth Chen, Ph.D |
