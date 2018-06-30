@@ -1,4 +1,4 @@
-# ed_firm_kafka
+# EduFirm
 
 ### Educational Firm with Kafka Deployment
 
