@@ -6,7 +6,7 @@ As one of the Educational Firm data scientist team, we are constantly checking t
 
 Please directly go to here to see  
 
-https://github.com/kckenneth/GoBike/blob/master/gobike.ipynb
+https://github.com/kckenneth/ed_firm_kafka/blob/master/kafka_implementation.md
 
 1. Kafka deployment
 2. Overview of Lambda Architecture 
