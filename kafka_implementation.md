@@ -10,7 +10,7 @@
 
 __Synopsis__  
 
-   As a data scientist at Ed Tech Firm that specializes in administering a number of tests, a common issue that comes up often to our data scientist team was a latency issue among several of our data warehouse. We have lots of data systems: relational databases, Apache Hadoop, Apache Spark, Redis, service system, a search system and monitoring systems. The raw data, repositories of past and present tests and results, are currently housed in AWS S3. A number of exam questions are dumped into a service layer before the actual test. The real-time data that are accumulated as exam takers submit their answers are stored in monitoring systems. As a result, our team spent most of our time establishing multiple pipelines connecting several of our data warehouse to streamline our data. However, the latency issue with different APIs across different pipelines still persists. Another confounding factor ensues as we expand our test centers, geographical replications of all of our pipelines have become another daily struggles for our team to streamline our data. A typical flowchart of our data is shown below.  
+   As a data scientist at Ed Tech Firm that specializes in administering a number of tests, a common issue that comes up often to our data scientist team was a latency issue among several of our data warehouse. We have lots of data systems: relational databases, Apache Hadoop, Apache Spark, Redis, service system, a search system and monitoring systems. The raw data, repositories of past and present tests and results, are currently housed in AWS S3. A number of exam questions are dumped into a service layer before the actual test. The real-time data that are accumulated as exam takers submit their answers are stored in monitoring systems. As a result, our team spent most of our time establishing multiple pipelines connecting several of our data warehouse to streamline our data. However, the latency issue with different APIs across different pipelines still persists. Another confounding factor ensues as we expand our test centers, geographical replications of all of our pipelines have become another daily struggles for our team to streamline our data. A typical flowchart of our data is shown in Figure 1.  
 
 <p align="center">
 <img src="img/before_kafka.png" width="600"></p>
@@ -18,11 +18,20 @@ __Synopsis__
 
 __Kafka__  
 
-To overcome the latency issue and impace on the real time data analytics, our team deployed kafka messaging system (open-source) in our test centers. Kafka serves as a central warehouse from which several service centers retrieve (consume) or immediately feed (produce) their real-time data for instant implementation. The goal of our data scientist team is to facilitate test takers exams schedules, adjust their exam questions based on their real-time answers and instant scoring system. Kafka facilitates all of our needs in our data warehouse and provides an efficiency and timeliness.  
+To overcome the latency issue and impace on the real time data analytics, our team deployed kafka messaging system (open-source) in our test centers. Kafka serves as a central warehouse from which several service centers retrieve (consume) or immediately feed (produce) their real-time data for instant implementation. The goal of our data scientist team is to facilitate test takers exams schedules, adjust their exam questions based on their real-time answers and instant scoring system. Kafka facilitates all of our needs in our data warehouse and provides an efficiency and timeliness (Figure 2).  
 
 <p align="center">
 <img src="img/after_kafka.png" width="500"></p>
 <p align="center">Figure 2. Kafka Real Time Data Communications</p>
+
+__Lambda Architecture__  
+
+By implementing a real time data analytics by kafka, our team establish more efficient and powerful database management system, known as **Lambda Architecture (LA)** coined by Nathan Marz. Deploying two parallel warehouses; batch layer and speed layer, we are now able to tackle big data as well as provide real time answers to our potential students and test takers (Figure 3).  
+
+<p align="center">
+<img src="img/LA.png" width="500"></p>
+<p align="center">Figure 3. Lambda Architecture</p>
+
 
 ### 1. Updating Docker Images 
 docker pull midsw205/base:latest   
