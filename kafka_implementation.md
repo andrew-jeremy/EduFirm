@@ -29,7 +29,7 @@ __Lambda Architecture__
 By implementing a real time data analytics by kafka, our team establish more efficient and powerful database management system, known as **Lambda Architecture (LA)** coined by Nathan Marz. Deploying two parallel warehouses; batch layer and speed layer, we are now able to tackle big data as well as provide real time answers to our potential students and test takers (Figure 3).  
 
 <p align="center">
-<img src="img/LA.png" width="500"></p>
+<img src="img/LA.png" width="700"></p>
 <p align="center">Figure 3. Lambda Architecture</p>
 
 
