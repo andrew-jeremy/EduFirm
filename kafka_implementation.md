@@ -24,6 +24,11 @@ To overcome the latency issue and impace on the real time data analytics, our te
 <img src="img/after_kafka.png" width="500"></p>
 <p align="center">Figure 2. Kafka Real Time Data Communications</p>
 
+### 1. Updating Docker Images 
+docker pull midsw205/base:latest   
+docker pull confluentinc/cp-zookeeper:latest
+docker pull confluentinc/cp-kafka:latest
+docker pull midsw205/spark-python:0.0.5
 
 ### 1. Logging into the assignment folder
   cd w205/assignment-06-kckenneth/
