@@ -106,9 +106,32 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 - (1) We can consume Kafka messages independently as follows:  
   - docker-compose exec kafka kafka-console-consumer --bootstrap-server kafka:29092 --topic exams --from-beginning --max-messages 42
 - (2) With Apache Spark container, we can directly pipe our Kafka messages into Spark and analyze the data in Spark  
-  - 1. First launch the Spark and give the Kafka messages as an object name "messages"
-     - docker-compose exec spark pyspark  
-     - messages = spark.read.format("kafka").option("kafka.bootstrap.servers", "kafka:29092").option("subscribe","exams").option("startingOffsets", "earliest").option("endingOffsets", "latest").load() 
+  - docker-compose exec spark pyspark  
+  
+## In Spark Environment  
+1. I first assigned the Kafka messages as "messages" object.  
+2. I counted the number of messages which counted at 3280 entires.  
+3. I also checked the first 20 rows. 
+4. Printing the format shows that Kafka messages in "binary" format. 
+5. I transformed them into strings format.  
+
+- messages = spark.read.format("kafka").option("kafka.bootstrap.servers", "kafka:29092").option("subscribe","exams").option("startingOffsets", "earliest").option("endingOffsets", "latest").load() 
+- messages.count()
+- messages.show()  
+- messages.printSchema()
+- messages_as_strings = messages.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
+
+### For sanity check, I double checked the transformed messages object.  
+
+- messages_as_strings.count()  
+- messages_as_strings.show()  
+- messages_as_strings.printSchema()  
+
+
+
+
+
+
 
      
 
