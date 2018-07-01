@@ -2,7 +2,7 @@
 |Title |  Kafka deployment in Educational Firm |
 |-----------|----------------------------------|
 |Author | Kenneth Chen, Ph.D |
-|Utility | Kafka, Spark, HDFS, Redis |
+|Utility | Kafka, Spark, HDFS, Droplet, Docker, LA |
 |Date | 6/29/2018 |
 
 
@@ -32,6 +32,13 @@ By implementing a real time data analytics by kafka, our team establish more eff
 <img src="img/LA.png" width="700"></p>
 <p align="center">Figure 3. Lambda Architecture</p>
 
+__Procedure__  
+
+We first deployed several docker containers: each equipped with essential libraries for necessary applications such as kafka containers for kafka applications and midsw205/spark-python container for spark applications. By doing so eliminates conventional cumbersome heavy weight instantiation of virual machine (VM) with unnecessary libraries and applications. In order to successfully load our containers, we listed them in docker-compose.yml file. Once all containers are up and running, we double-checked each container logs file to make sure they have already started running. 
+
+In next step, we launched Kafka and created a topic. Data from json file was released in Kafka producer mode. We then piped our Kafka topic into spark and analyzed the data. All data engineered in spark was later stored in HDFS. 
+
+I laid out a step by step implementation of Kafka in details in the following.  
 
 ### 1. Updating Docker Images 
 docker pull midsw205/base:latest   
