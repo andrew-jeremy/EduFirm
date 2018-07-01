@@ -41,10 +41,10 @@ In next step, we launched Kafka and created a topic. Data from json file was rel
 I laid out a step by step implementation of Kafka in details in the following.  
 
 ### 1. Updating Docker Images 
-docker pull midsw205/base:latest   
-docker pull confluentinc/cp-zookeeper:latest  
-docker pull confluentinc/cp-kafka:latest  
-docker pull midsw205/spark-python:0.0.5  
+   docker pull midsw205/base:latest   
+   docker pull confluentinc/cp-zookeeper:latest  
+   docker pull confluentinc/cp-kafka:latest  
+   docker pull midsw205/spark-python:0.0.5  
 
 ### 2. Logging into the assignment folder
   cd w205/assignment-07-kckenneth/
@@ -62,20 +62,16 @@ docker pull midsw205/spark-python:0.0.5
    ##### if need be, remove any running containers by rm
   docker rm -f $(docker ps -aq) 
 
-### 2. Run a single docker container midsw205 in bash mode
+### 6. Run a single docker container midsw205 in bash mode
 docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 
+## Inside the Docker Container
+1. check into assignment 7 folder,
+2. check git branch, create assignment branch if necessary  
+3. download json file,  
+4. create docker-compose.yml  
 
-### 5. Run docker container 
-  docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
-
-## Inside Docker Container
-1. check into assignment 6 folder,
-2. check git branch, 
-3. download json file, 
-4. create docker-compose.yml
-
-  cd assignment-06-kckenneth  
+  cd assignment-07-kckenneth  
   ls  
   git status  
   git branch  
