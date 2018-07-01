@@ -59,8 +59,8 @@ docker pull midsw205/spark-python:0.0.5
   docker-compose ps  
   docker ps -a  
 
-##### if need be, remove any running containers by rm
-  docker rm container id
+   ##### if need be, remove any running containers by rm
+  docker rm -f $(docker ps -aq) 
 
 ### 2. Run a single docker container midsw205 in bash mode
 docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
