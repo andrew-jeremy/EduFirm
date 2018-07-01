@@ -106,8 +106,11 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 - (1) We can consume Kafka messages independently as follows:  
   - docker-compose exec kafka kafka-console-consumer --bootstrap-server kafka:29092 --topic exams --from-beginning --max-messages 42
 - (2) With Apache Spark container, we can directly pipe our Kafka messages into Spark and analyze the data in Spark  
-  - 1. First launch the Spark  
-   - docker-compose exec spark pyspark
+  - 1. First launch the Spark and give the Kafka messages as an object name "messages"
+     - docker-compose exec spark pyspark  
+     - messages = spark.read.format("kafka").option("kafka.bootstrap.servers", "kafka:29092").option("subscribe","exams").option("startingOffsets", "earliest").option("endingOffsets", "latest").load() 
+
+     
 
 
 #### Count the number of messages
