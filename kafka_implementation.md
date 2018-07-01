@@ -115,17 +115,17 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 4. Printing the format shows that Kafka messages in "binary" format. 
 5. I transformed them into strings format.  
 
-- messages = spark.read.format("kafka").option("kafka.bootstrap.servers", "kafka:29092").option("subscribe","exams").option("startingOffsets", "earliest").option("endingOffsets", "latest").load() 
-- messages.count()
-- messages.show()  
-- messages.printSchema()
-- messages_as_strings = messages.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
+>>> messages = spark.read.format("kafka").option("kafka.bootstrap.servers", "kafka:29092").option("subscribe","exams").option("startingOffsets", "earliest").option("endingOffsets", "latest").load()  
+>>> messages.count()
+>>> messages.show()  
+>>> messages.printSchema()
+>>> messages_as_strings = messages.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
 
 ### For sanity check, I double checked the transformed messages object.  
 
-- messages_as_strings.count()  
-- messages_as_strings.show()  
-- messages_as_strings.printSchema()  
+>>> messages_as_strings.count()  
+>>> messages_as_strings.show()  
+>>> messages_as_strings.printSchema()  
 
 # Message Dissection and Analytics  
 
