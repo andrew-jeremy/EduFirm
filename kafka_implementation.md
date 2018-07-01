@@ -118,6 +118,8 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 - If you run the kafka producer again with the json file, the messages will add up to the previous messages, adding up the total messages produced.  
 - Messages can be consumed multiple times until they are removed from the system. 
 
+3280 entries from the json file
+
 # Next Step  
 - I checked the json file, it has 114 key words, including:   
   - keen_timestamp  
