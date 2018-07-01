@@ -46,21 +46,27 @@ I laid out a step by step implementation of Kafka in details in the following.
    docker pull midsw205/spark-python:0.0.5  
 ```
 ### 2. Logging into the assignment folder
+```
   cd w205/assignment-07-kckenneth/
-
-### 3. Checking what's in my directory
-  ls
+```
+### 3. Checking what's in my directory 
+```
+  ls  
+```
 
 ### 4. Making sure at which branch I am on git
+```
   git branch   
-
+```
 ### 5. Checking if there's any pre-existing docker containers running
+```
   docker-compose ps  
   docker ps -a  
-
+```
    ##### if need be, remove any running containers by rm
+```
   docker rm -f $(docker ps -aq) 
-
+```
 ### 6. Run a single docker container midsw205 in bash mode
 docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 
