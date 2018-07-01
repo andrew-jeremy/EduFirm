@@ -110,7 +110,7 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
   
 ## In Spark Environment  
 1. I first assigned the Kafka messages as "messages" object.  
-2. I counted the number of messages which counted at 3280 entires.  
+2. I counted the number of messages which counted at 3280 entries.  
 3. I also checked the first 20 rows. 
 4. Printing the format shows that Kafka messages in "binary" format. 
 5. I transformed them into strings format.  
@@ -126,6 +126,8 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 - messages_as_strings.count()  
 - messages_as_strings.show()  
 - messages_as_strings.printSchema()  
+
+# Message Dissection and Analytics  
 
 
 
