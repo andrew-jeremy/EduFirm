@@ -100,10 +100,15 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
   
 ## II. Kafka 2nd step -- Produce Messages 
 #### Since we have added midsw205 image in our cluster, we can directly pipe our json file query (mids image) into kafka producer (kafka image)[Cluster magic]
-  docker-compose exec mids bash -c "cat /w205/assignment-06-kckenneth/assessment-attempts-20180128-121051-nested.json | jq '.[]' -c | kafkacat -P -b kafka:29092 -t exams && echo 'Produced 100 messages.'"
+  docker-compose exec mids bash -c "cat /w205/assignment-07-kckenneth/assessment-attempts-20180128-121051-nested.json | jq '.[]' -c | kafkacat -P -b kafka:29092 -t exams && echo 'Produced EXAM messages.'"
 
 ## III. Kafka 3rd step -- Consume Messages
-  docker-compose exec kafka kafka-console-consumer --bootstrap-server kafka:29092 --topic exams --from-beginning --max-messages 42
+- (1) We can consume Kafka messages independently as follows:  
+  - docker-compose exec kafka kafka-console-consumer --bootstrap-server kafka:29092 --topic exams --from-beginning --max-messages 42
+- (2) With Apache Spark container, we can directly pipe our Kafka messages into Spark and analyze the data in Spark  
+  - 1. First launch the Spark  
+   - docker-compose exec spark pyspark
+
 
 #### Count the number of messages
   docker-compose exec mids bash -c "kafkacat -C -b kafka:29092 -t exams -o beginning -e" | wc -l
