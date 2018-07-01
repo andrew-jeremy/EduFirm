@@ -5,9 +5,6 @@
 |Utility | Kafka, Spark, HDFS, Droplet, Docker, LA |
 |Date | 6/29/2018 |
 
-
-
-
 __Synopsis__  
 
    As a data scientist at Ed Tech Firm that specializes in administering a number of tests, a common issue that comes up often to our data scientist team was a latency issue among several of our data warehouses. We have lots of database systems: relational databases, Apache Hadoop, Apache Spark, Redis, service system, a search system and monitoring systems. The raw data, repositories of past and present tests and results, are currently housed in AWS S3. A number of exam questions are dumped into a service layer before the actual test. The real-time data that are accumulated as exam takers submit their answers are stored in monitoring systems. As a result, our team spent most of our time establishing multiple pipelines connecting several of our data warehouses to streamline our data. However, the latency issue with different APIs across different pipelines still persists. Another confounding factor ensues as we expand our test centers, geographical replications of all of our pipelines have become another daily struggles for our team to streamline our data. A typical flowchart of our data is shown in Figure 1.  
@@ -42,11 +39,12 @@ I laid out a step by step implementation of Kafka in details in the following.
 
 ## In Droplet, Update images 
 ### 1. Updating Docker Images 
+```
    docker pull midsw205/base:latest   
    docker pull confluentinc/cp-zookeeper:latest  
    docker pull confluentinc/cp-kafka:latest  
    docker pull midsw205/spark-python:0.0.5  
-
+```
 ### 2. Logging into the assignment folder
   cd w205/assignment-07-kckenneth/
 
