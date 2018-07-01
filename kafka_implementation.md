@@ -42,18 +42,24 @@ I laid out a step by step implementation of Kafka in details in the following.
 
 ### 1. Updating Docker Images 
 docker pull midsw205/base:latest   
-docker pull confluentinc/cp-zookeeper:latest
-docker pull confluentinc/cp-kafka:latest
-docker pull midsw205/spark-python:0.0.5
+docker pull confluentinc/cp-zookeeper:latest  
+docker pull confluentinc/cp-kafka:latest  
+docker pull midsw205/spark-python:0.0.5  
 
-### 1. Logging into the assignment folder
-  cd w205/assignment-06-kckenneth/
+### 2. Run a single docker container midsw205 in bash mode
+docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 
-### 2. Checking what's in my directory
+### 3. Logging into the assignment folder
+  cd w205/assignment-07-kckenneth/
+
+### 4. Checking what's in my directory
   ls
 
-### 3. Making sure at which branch I am on git
-  git branch
+### 5. Making sure at which branch I am on git
+  git branch  
+  
+  * Create an assignment branch if necessary  
+  git checkout -b assignment  
 
 ### 4. Checking if there's any pre-existing docker-compose running
   docker-compose ps  
