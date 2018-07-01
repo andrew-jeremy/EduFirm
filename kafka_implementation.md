@@ -193,13 +193,19 @@ exit
 - If you run the kafka producer again with the json file, the messages will add up to the previous messages, adding up the total messages produced.  
 - Messages can be consumed multiple times until they are removed from the system. 
 
-3280 entries from the json file
+# Observations  
 
-# Observation  
+There are 3280 exam entries from our firm. Exams are of different types and I listed a few of them here.    
+1. Normal Forms and All That Jazz Master Class  
+2. The Principles of Microservices  
+3. Introduction to Big Data  
+4. Learning Git  
+5. Git Fundamentals for Web Developers  
 
+Majority of exams have 4 questions; each with 4 multiple choices for True or False.  
 
 # Next Step  
-- I checked the json file, it has 114 key words, including:   
+- I checked the json file, it has 114 key words (all levels), including:   
   - keen_timestamp  
   - max_attempts  
   - started_at  
@@ -208,5 +214,5 @@ exit
 - It looks like there are 4 questions type: each with a multiple choice: True or False. Based on the students' answers submission, kafka can facilitate scoring students submission by producing and consuming the data in real time. 
 - This is reflective of what is going on in computer-adjusted examinations such as GRE, GMAT where questions appearing in next attempt are adjusted based on students performance on current questions. 
 - We could also look at the duration of time each student takes for the exam.   
-- There are 3181 entry in our database.  
+- There are 3280 entries in our database.  
 
