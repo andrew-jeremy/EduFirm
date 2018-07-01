@@ -142,6 +142,7 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 2. Check the 2nd, 3rd level keys   
 3. Print those respective keys values  
 
+```
 \>>> print(first_message.keys())  
 
 dict_keys(['keen_timestamp', 'max_attempts', 'started_at', 'base_exam_id', 'user_exam_id', 'sequences', 'keen_created_at', 'certification', 'keen_id', 'exam_name'])  
@@ -153,14 +154,18 @@ dict_keys(['questions', 'attempt', 'id', 'counts'])
 \>>> print(first_message['sequences']['counts'])  
 
 dict_keys(['incomplete', 'submitted', 'incorrect', 'all_correct', 'correct', 'total', 'unanswered'])  
+```
 
 #### Exit Spark
 \>>> exit()  
 
 ## Tear down the cluster
-  docker-compose down  
-  docker-compose ps     # Check if it's complete shutdown  
-  docker ps -a          # Check if there's any container left  
+  docker-compose down    
+  docker-compose ps        
+  docker ps -a            
+
+#### Exit Droplet
+exit 
 
 # Caution  
 
@@ -168,6 +173,9 @@ dict_keys(['incomplete', 'submitted', 'incorrect', 'all_correct', 'correct', 'to
 - Messages can be consumed multiple times until they are removed from the system. 
 
 3280 entries from the json file
+
+# Observation  
+
 
 # Next Step  
 - I checked the json file, it has 114 key words, including:   
