@@ -129,19 +129,35 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 
 # Message Dissection and Analytics  
 
+#### Since there are 3280 entries, I checked the first message. In order to feed the string object into dictionary format, I imported the json library. 
 
+- import json
 
+#### Load the first messages of the entire Kafka messages into 'first_message' object  
 
+- first_message = json.loads(messages_as_strings.select('value').take(1)[0].value)  
 
+#### As I'm interested in the exam type, total number of questions for each exam and students performance, I checked as follows:  
+1. Check the first level keys  
+2. Check the 2nd, 3rd level keys   
+3. Print those respective keys values  
 
+- print(first_message.keys())
 
-     
+dict_keys(['keen_timestamp', 'max_attempts', 'started_at', 'base_exam_id', 'user_exam_id', 'sequences', 'keen_created_at', 'certification', 'keen_id', 'exam_name'])  
 
+- print(first_message['sequences'].keys())  
 
-#### Count the number of messages
-  docker-compose exec mids bash -c "kafkacat -C -b kafka:29092 -t exams -o beginning -e" | wc -l
+dict_keys(['questions', 'attempt', 'id', 'counts'])  
 
-### Tear down the cluster
+- print(first_message['sequences']['counts'])  
+
+dict_keys(['incomplete', 'submitted', 'incorrect', 'all_correct', 'correct', 'total', 'unanswered'])  
+
+#### Exit Spark
+- exit()  
+
+## Tear down the cluster
   docker-compose down  
   docker-compose ps     # Check if it's complete shutdown  
   docker ps -a          # Check if there's any container left  
