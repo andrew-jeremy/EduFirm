@@ -40,6 +40,7 @@ In next step, we launched Kafka and created a topic. Data from json file was rel
 
 I laid out a step by step implementation of Kafka in details in the following.  
 
+## In Droplet, Update images 
 ### 1. Updating Docker Images 
    docker pull midsw205/base:latest   
    docker pull confluentinc/cp-zookeeper:latest  
