@@ -72,15 +72,15 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 3. download json file,  
 4. create docker-compose.yml  
 
-  cd assignment-07-kckenneth  
-  ls  
-  git status  
-  git branch  
+  - cd assignment-07-kckenneth  
+  - ls  
+  - git status  
+  - git branch  
     * Create an assignment branch if necessary  
   $ git checkout -b assignment 
-  curl -L -o assessment-attempts-20180128-121051-nested.json https://goo.gl/f5bRm4  
-  vi docker-compose.yml  
-  exit  
+  - curl -L -o assessment-attempts-20180128-121051-nested.json https://goo.gl/f5bRm4  
+  - vi docker-compose.yml  
+  - exit  
 
 ## In Droplet, I spin up the cluster in detached mode by -d
   docker-compose up -d
