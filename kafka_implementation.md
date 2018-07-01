@@ -137,7 +137,7 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 
 - first_message = json.loads(messages_as_strings.select('value').take(1)[0].value)  
 
-#### As I'm interested in the exam type, total number of questions for each exam and students performance, I checked as follows:  
+#### As I'm interested in the exam type, total number of questions for each exam and students performance, I checked the message as follows:  
 1. Check the first level keys  
 2. Check the 2nd, 3rd level keys   
 3. Print those respective keys values  
