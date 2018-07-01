@@ -1,0 +1,79 @@
+  499  spark-shell
+  500  cd output
+  501  ls
+  502  ls
+  503  cat part-0000
+  504  cat part-00000
+  505  cd ~
+  506  cd assignment-07-kckenneth/
+  507  ls
+  508  vi docker-compose.yml 
+  509  git status
+  510  git status
+  511  git checkout -b assignment
+  512  cp ../assignment-06-kckenneth/docker-compose.yml .
+  513  git branch
+  514  git checkout master
+  515  ls
+  516  docker run -it --rm -v /Users/lwinchen:/w205 midsw205/base:latest bash
+  517  docker ps -a
+  518  docker images 
+  519  docker rm -f $(docker ps -aq)
+  520  docker rm -f $(docker ps -aq)
+  521  docker images
+  522  docker-compose up -d
+  523  docker-compose logs -f kafka | grep -i started
+  524  docker-compose logs -f zookeeper | grep -i binding
+  525  vi docker-compose.yml 
+  526  docker-compose exec spark pyspark
+  527  docker pull midsw205/spark-python:0.0.5
+  528  docker run -it --rm -v /Users/lwinchen/assignment-07-kckenneth:/w205 midsw205/base:latest bash
+  529  docker run -it --rm -v /Users/lwinchen:/w205 midsw205/base:latest bash
+  530  docker-compose ps
+  531  docker-compose exec spark pyspark
+  532  docker-compose down
+  533  docker ps -a
+  534  docker-compose ps
+  535  docker-compose up -d
+  536  docker-compose exec spark pyspark
+  537  docker-compose exec kafka kafka-topics --create --topic foo --partitions 1 --replication-factor 1 --if-not-exists --zookeeper zookeeper:32181
+  538  docker-compose exec kafka kafka-topics --describe --topic foo --zookeeper zookeeper:32181
+  539  docker-compose exec kafka bash -c "seq 42 | kafka-console-producer --request-required-acks 1 --broker-list kafka:29092 --topic foo && echo 'Produced 42 messages.'"
+  540  docker-compose exec spark pyspark
+  541  ls
+  542  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json"
+  543  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.'"
+  544  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.' -c"
+  545  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[]' -c"
+  546  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[]'"
+  547  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[0] | [paths | map(.|tostring)|join(".")]'
+"
+  548  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[0] | [paths | map(.|tostring)|join('''.''')]'"
+  549  docker-compose exec mids bash -c 'cat assessment-attempts-20180128-121051-nested.json | jq ".[0] | [paths | map(.|tostring)|join('.')]"'
+  550  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[0] | [paths | map(.|tostring)|join('.')]'"
+  551  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[0] | [paths | map(.|tostring)]'"
+  552  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[0]'"
+  553  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[0]["exam_name"]'
+"
+  554  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[0]['exam_name']"
+  555  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[0]|.exam_name'"
+  556  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[]' -c | kafkacat -P -b kafka:29092 -t exams && echo 'Produced 100 messages.'"
+  557  docker-compose exec spark pyspark
+  558  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[0]|.exam_name'"
+  559  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[1]|.exam_name'"
+  560  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[2]|.exam_name'"
+  561  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[3]|.exam_name'"
+  562  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[4]|.exam_name'"
+  563  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[5]|.exam_name'"
+  564  docker-compose exec mids bash -c "cat assessment-attempts-20180128-121051-nested.json | jq '.[6]|.exam_name'"
+  565  docker-compose exec spark pyspark
+  566  cd ..
+  567  cd EduFirm/
+  568  git status
+  569  git pull --all
+  570  ls
+  571  vi kafka_implementation.md 
+  572  cd ..
+  573  history
+  574  cd EduFirm/
+  575  history > kenneth_history.txt
