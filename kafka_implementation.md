@@ -40,32 +40,32 @@ I laid out a step by step implementation of Kafka in details in the following.
 ## In Droplet, Update images 
 ### 1. Updating Docker Images 
 ```
-   docker pull midsw205/base:latest   
-   docker pull confluentinc/cp-zookeeper:latest  
-   docker pull confluentinc/cp-kafka:latest  
-   docker pull midsw205/spark-python:0.0.5  
+docker pull midsw205/base:latest   
+docker pull confluentinc/cp-zookeeper:latest  
+docker pull confluentinc/cp-kafka:latest  
+docker pull midsw205/spark-python:0.0.5  
 ```
 ### 2. Logging into the assignment folder
 ```
-  cd w205/assignment-07-kckenneth/
+cd w205/assignment-07-kckenneth/
 ```
 ### 3. Checking what's in my directory 
 ```
-  ls  
+ls  
 ```
 
 ### 4. Making sure at which branch I am on git
 ```
-  git branch   
+git branch   
 ```
 ### 5. Checking if there's any pre-existing docker containers running
 ```
-  docker-compose ps  
-  docker ps -a  
+docker-compose ps  
+docker ps -a  
 ```
    ##### if need be, remove any running containers by rm
 ```
-  docker rm -f $(docker ps -aq) 
+docker rm -f $(docker ps -aq) 
 ```
 ### 6. Run a single docker container midsw205 in bash mode
 ```
@@ -78,43 +78,50 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 4. create docker-compose.yml  
 
 ```
-  cd assignment-07-kckenneth  
-  ls  
-  git status  
-  git branch  
+cd assignment-07-kckenneth  
+ls  
+git status  
+git branch 
+git checkout -b assignment  
+curl -L -o assessment-attempts-20180128-121051-nested.json https://goo.gl/f5bRm4  
+vi docker-compose.yml  
+exit  
 ```
-    * Create an assignment branch if necessary  
-  $ git checkout -b assignment 
-  - curl -L -o assessment-attempts-20180128-121051-nested.json https://goo.gl/f5bRm4  
-  - vi docker-compose.yml  
-  - exit  
-
 ## In Droplet, I spin up the cluster in detached mode by -d
-  docker-compose up -d
-
+```
+docker-compose up -d
+```
 ### Check if the zookeeper is up and running by finding the *binding* word in the logs file
-  docker-compose logs zookeeper | grep -i binding  
-
+```
+docker-compose logs zookeeper | grep -i binding  
+```
 ### I also checked kafka is up and running by searching the word *started*
-  docker-compose logs kafka | grep -i started
-
+```
+docker-compose logs kafka | grep -i started
+```
 ## I. Kafka 1st step -- Create a Topic
 #### I created a topic *exams* with partition 1, replication-factor 1
-  docker-compose exec kafka kafka-topics --create --topic exams --partitions 1 --replication-factor 1 --if-not-exists --zookeeper zookeeper:32181
-
+```
+docker-compose exec kafka kafka-topics --create --topic exams --partitions 1 --replication-factor 1 --if-not-exists --zookeeper zookeeper:32181
+```
 #### I checked the broker I just created by *describe* function  
-  docker-compose exec kafka kafka-topics --describe --topic exams --zookeeper zookeeper:32181
-  
+```
+docker-compose exec kafka kafka-topics --describe --topic exams --zookeeper zookeeper:32181
+```  
 ## II. Kafka 2nd step -- Produce Messages 
 #### Since we have added midsw205 image in our cluster, we can directly pipe our json file query (mids image) into kafka producer (kafka image)[Cluster magic]
-  docker-compose exec mids bash -c "cat /w205/assignment-07-kckenneth/assessment-attempts-20180128-121051-nested.json | jq '.[]' -c | kafkacat -P -b kafka:29092 -t exams && echo 'Produced EXAM messages.'"
-
+```
+docker-compose exec mids bash -c "cat /w205/assignment-07-kckenneth/assessment-attempts-20180128-121051-nested.json | jq '.[]' -c | kafkacat -P -b kafka:29092 -t exams && echo 'Produced EXAM messages.'"
+```
 ## III. Kafka 3rd step -- Consume Messages
 - (1) We can consume Kafka messages independently as follows:  
-  - docker-compose exec kafka kafka-console-consumer --bootstrap-server kafka:29092 --topic exams --from-beginning --max-messages 42
+```
+docker-compose exec kafka kafka-console-consumer --bootstrap-server kafka:29092 --topic exams --from-beginning --max-messages 42
+```
 - (2) With Apache Spark container, we can directly pipe our Kafka messages into Spark and analyze the data in Spark  
-  - docker-compose exec spark pyspark  
-  
+```
+docker-compose exec spark pyspark  
+```  
 ## In Spark Environment  
 1. I first assigned the Kafka messages as "messages" object.  
 2. I counted the number of messages which counted at 3280 entries.  
@@ -122,57 +129,64 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
 4. Printing the format shows that Kafka messages in "binary" format. 
 5. I transformed them into strings format.  
 
-\>>> messages = spark.read.format("kafka").option("kafka.bootstrap.servers", "kafka:29092").option("subscribe","exams").option("startingOffsets", "earliest").option("endingOffsets", "latest").load()  
-\>>> messages.count()  
-\>>> messages.show()   
-\>>> messages.printSchema()   
-\>>> messages_as_strings = messages.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")  
-
+```
+>>> messages = spark.read.format("kafka").option("kafka.bootstrap.servers", "kafka:29092").option("subscribe","exams").option("startingOffsets", "earliest").option("endingOffsets", "latest").load()  
+>>> messages.count()  
+>>> messages.show()   
+>>> messages.printSchema()   
+>>> messages_as_strings = messages.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")  
+```
 ### For sanity check, I double checked the transformed messages object.  
-
-\>>> messages_as_strings.count()  
-\>>> messages_as_strings.show()  
-\>>> messages_as_strings.printSchema()  
-
+```
+>>> messages_as_strings.count()  
+>>> messages_as_strings.show()  
+>>> messages_as_strings.printSchema()  
+```
 # Message Dissection and Analytics  
 
 #### Since there are 3280 entries, I checked the first message. In order to feed the string object into dictionary format, I imported the json library. 
 
-\>>> import json  
-
+```
+>>> import json  
+```
 #### Load the first messages of the entire Kafka messages into 'first_message' object  
 
-\>>> first_message = json.loads(messages_as_strings.select('value').take(1)[0].value)  
-
+```
+>>> first_message = json.loads(messages_as_strings.select('value').take(1)[0].value)  
+```
 #### As I'm interested in the exam type, total number of questions for each exam and students performance, I checked the message as follows:  
 1. Check the first level keys  
 2. Check the 2nd, 3rd level keys   
 3. Print those respective keys values  
 
 ```
-\>>> print(first_message.keys())  
+>>> print(first_message.keys())  
 
 dict_keys(['keen_timestamp', 'max_attempts', 'started_at', 'base_exam_id', 'user_exam_id', 'sequences', 'keen_created_at', 'certification', 'keen_id', 'exam_name'])  
 
-\>>> print(first_message['sequences'].keys())  
+>>> print(first_message['sequences'].keys())  
 
 dict_keys(['questions', 'attempt', 'id', 'counts'])  
 
-\>>> print(first_message['sequences']['counts'])  
+>>> print(first_message['sequences']['counts'])  
 
 dict_keys(['incomplete', 'submitted', 'incorrect', 'all_correct', 'correct', 'total', 'unanswered'])  
 ```
 
 #### Exit Spark
-\>>> exit()  
-
+```
+>>> exit()  
+```
 ## Tear down the cluster
-  docker-compose down    
-  docker-compose ps        
-  docker ps -a            
-
+```
+docker-compose down    
+docker-compose ps        
+docker ps -a            
+```
 #### Exit Droplet
+```
 exit 
+```
 
 # Caution  
 
