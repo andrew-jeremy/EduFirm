@@ -68,18 +68,21 @@ I laid out a step by step implementation of Kafka in details in the following.
   docker rm -f $(docker ps -aq) 
 ```
 ### 6. Run a single docker container midsw205 in bash mode
+```
 docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
-
+```
 ## Inside the Docker Container
 1. check into assignment 7 folder,
 2. check git branch, create assignment branch if necessary  
 3. download json file,  
 4. create docker-compose.yml  
 
-  - cd assignment-07-kckenneth  
-  - ls  
-  - git status  
-  - git branch  
+```
+  cd assignment-07-kckenneth  
+  ls  
+  git status  
+  git branch  
+```
     * Create an assignment branch if necessary  
   $ git checkout -b assignment 
   - curl -L -o assessment-attempts-20180128-121051-nested.json https://goo.gl/f5bRm4  
