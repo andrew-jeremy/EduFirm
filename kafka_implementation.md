@@ -59,7 +59,7 @@ docker run -it --rm -v /home/science/w205:/w205 midsw205/base:latest bash
   git branch  
   
   * Create an assignment branch if necessary  
-  git checkout -b assignment  
+  $ git checkout -b assignment  
 
 ### 4. Checking if there's any pre-existing docker-compose running
   docker-compose ps  
