@@ -1,15 +1,33 @@
-# EduFirm
+# Project 2: Tracking User Activity
 
-### Educational Firm with Kafka Deployment
+- In this project, you work at an ed tech firm. You've created a service that delivers assessments, and now lots of different customers (e.g., Pearson) want to publish their assessments on it. You need to get ready for data scientists who work for these customers to run queries on the data. 
 
-As one of the Educational Firm data scientist team, we are constantly checking technology progress and impact on our data analysis. The main issue persists in our firm is the latency issue and scalability as we expand our firm across the region. Here we deploy **Kafka** to facilitate our needs and improve efficiency and timeliness of our data analytics. 
+- Through 3 different activites, you will spin up existing containers and prepare the infrastructure to land the data in the form and structure it needs to be to be queried. 
+  1) Publish and consume messages with kafka.
+  2) Use spark to transform the messages.
+  3) Use spark to transform the messages so that you can land them in hdfs.
 
-Please directly go to here to see  
+_______________________________________________________________________________________________________
 
-https://github.com/kckenneth/ed_firm_kafka/blob/master/kafka_implementation.md
+## Assignment 08
 
-1. Kafka deployment
-2. Overview of Lambda Architecture 
-3. Spark implementation
+- In this assignment, you'll spin up a cluster with kafka, zookeeper, spark and hdfs containers as well as the mids container. We're adding transforming the messages so that you can land them in hdfs with spark to last week's activity.
 
+### Follow the steps we did in class for the github data with the assessment data:
+
+#### Get the data:
+
+    curl -L -o assessment-attempts-20180128-121051-nested.json https://goo.gl/f5bRm4
+
+#### Use this docker-compose exec command:
+
+    docker-compose exec mids bash -c "cat /w205/assessment-attempts-20180128-121051-nested.json | jq '.[]' -c | kafkacat -P -b kafka:29092 -t commits"
+
+#### What you turn in:
+- In your `/assignment-08-<user-name>` repo:
+	* your `docker-compose.yml` 
+	* once you've run the example on your terminal
+	  * Run `history > <user-name>-history.txt`
+	  * Save the relevant portion of your history as `<user-name>-annotations.md`
+	  * Annotate the file with explanations of what you were doing at each point.
 
