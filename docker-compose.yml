@@ -45,7 +45,7 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - /Users/lwinchen:/EduFirm2
+      - /Users/kckenneth:/EduFirm2
     command: bash
     depends_on:
       - cloudera
@@ -59,6 +59,6 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - /Users/lwinchen:/EduFirm2
+      - /Users/kckenneth:/EduFirm2
     extra_hosts:
       - "moby:127.0.0.1"
